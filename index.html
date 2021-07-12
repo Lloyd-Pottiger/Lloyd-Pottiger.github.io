@@ -249,228 +249,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/12/WSL%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83(CC++PythonNode.js)%E6%90%AD%E5%BB%BA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Lloyd's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/07/12/WSL%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83(CC++PythonNode.js)%E6%90%AD%E5%BB%BA/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-07-12T21:40:17+08:00">
-                2021-07-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="WSL开发环境-C-C-Python-Node-js-搭建"><a href="#WSL开发环境-C-C-Python-Node-js-搭建" class="headerlink" title="WSL开发环境(C/C++/Python/Node.js)搭建"></a>WSL开发环境(C/C++/Python/Node.js)搭建</h1><blockquote>
-<p>作者：Lloyd<br>时间：2021.06.19</p>
-</blockquote>
-<p>[TOC]</p>
-<h2 id="WSL-配置"><a href="#WSL-配置" class="headerlink" title="WSL 配置"></a>WSL 配置</h2><h3 id="1-启用虚拟机"><a href="#1-启用虚拟机" class="headerlink" title="1. 启用虚拟机"></a>1. 启用虚拟机</h3><p>两种方法任选其一：</p>
-<ul>
-<li><p>管理员权限运行powershell并运行下面的命令：</p>
-  <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Enable-WindowsOptionalFeature</span> <span class="literal">-Online</span> <span class="literal">-FeatureName</span> Microsoft<span class="literal">-Windows</span><span class="literal">-Subsystem</span><span class="literal">-Linux</span></span><br></pre></td></tr></table></figure></li>
-<li><p>控制面板 -&gt; 程序 -&gt; 程序和功能 -&gt; 启用或关闭Windows功能 -&gt; 勾选 适用于Linux的Windows子系统/虚拟机平台</p>
-  <img src="C:\Users\15791\AppData\Roaming\Typora\typora-user-images\image-20210619101823940.png" alt="image-20210619101823940" style="zoom:80%;" /></li>
-</ul>
-<h3 id="2-重启电脑"><a href="#2-重启电脑" class="headerlink" title="2.  重启电脑"></a>2.  重启电脑</h3><h3 id="3-打开应用商城搜索“WSL”，可根据自己需求选择安装一个或多个Linux系统："><a href="#3-打开应用商城搜索“WSL”，可根据自己需求选择安装一个或多个Linux系统：" class="headerlink" title="3.  打开应用商城搜索“WSL”，可根据自己需求选择安装一个或多个Linux系统："></a>3.  打开应用商城搜索“WSL”，可根据自己需求选择安装一个或多个Linux系统：</h3><img src="C:\Users\15791\AppData\Roaming\Typora\typora-user-images\image-20210619102102593.png" alt="image-20210619102102593" style="zoom:80%;" />
-
-<p>下面以<code>Ubuntu</code>为例.</p>
-<h3 id="4-安装完成后可在开始菜单里找到快捷方式并启动，第一次运行需要等待安装并设置用户名、密码。"><a href="#4-安装完成后可在开始菜单里找到快捷方式并启动，第一次运行需要等待安装并设置用户名、密码。" class="headerlink" title="4. 安装完成后可在开始菜单里找到快捷方式并启动，第一次运行需要等待安装并设置用户名、密码。"></a>4. 安装完成后可在开始菜单里找到快捷方式并启动，第一次运行需要等待安装并设置用户名、密码。</h3><p>用户名需满足UNIX标准，全小写字母和数字</p>
-<h3 id="5-升级WSL2"><a href="#5-升级WSL2" class="headerlink" title="5. 升级WSL2"></a>5. 升级WSL2</h3><h4 id="1-对比WSL1"><a href="#1-对比WSL1" class="headerlink" title="1. 对比WSL1"></a>1. <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/wsl/compare-versions">对比WSL1</a></h4><img src="C:\Users\15791\AppData\Roaming\Typora\typora-user-images\image-20210619102607508.png" alt="image-20210619102607508" style="zoom:80%;" />
-
-<p><strong>最重要的是WSL2完美支持Docker！</strong></p>
-<h4 id="2-启用WSL2"><a href="#2-启用WSL2" class="headerlink" title="2. 启用WSL2"></a>2. 启用WSL2</h4><ul>
-<li><p>确保你的Windows版本大于10.0.18917</p>
-</li>
-<li><p>更新WSL2内核：<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows/wsl/install-win10#step-4---download-the-linux-kernel-update-package">下载地址</a></p>
-  <img src="C:\Users\15791\AppData\Roaming\Typora\typora-user-images\image-20210619103712090.png" alt="image-20210619103712090" style="zoom:80%;" /></li>
-<li><p>管理员权限运行powershell并运行下面的命令：</p>
-  <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">-l</span></span><br><span class="line">wsl -<span class="literal">-set</span><span class="literal">-version</span> &lt;Distro&gt; <span class="number">2</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>&lt;Distro&gt;</code> 指<code>wsl -l</code> 得到的结果</p>
-</blockquote>
-</li>
-</ul>
-<h2 id="Windows-Terminal-配置"><a href="#Windows-Terminal-配置" class="headerlink" title="Windows Terminal 配置"></a>Windows Terminal 配置</h2><h3 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h3><img src="C:\Users\15791\AppData\Roaming\Typora\typora-user-images\image-20210619104007101.png" alt="image-20210619104007101" style="zoom:80%;" />
-
-<h3 id="2-配置"><a href="#2-配置" class="headerlink" title="2. 配置"></a>2. 配置</h3><img src="C:\Users\15791\AppData\Roaming\Typora\typora-user-images\image-20210619104134868.png" alt="image-20210619104134868" style="zoom:80%;" />
-
-<img src="C:\Users\15791\AppData\Roaming\Typora\typora-user-images\image-20210619104219740.png" alt="image-20210619104219740" style="zoom:80%;" />
-
-<img src="C:\Users\15791\AppData\Roaming\Typora\typora-user-images\image-20210619104243195.png" alt="image-20210619104243195" style="zoom:80%;" />
-
-<img src="C:\Users\15791\AppData\Roaming\Typora\typora-user-images\image-20210619104258069.png" alt="image-20210619104258069" style="zoom:80%;" />
-
-<h2 id="Git-安装配置"><a href="#Git-安装配置" class="headerlink" title="Git 安装配置"></a>Git 安装配置</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">sudo apt<span class="literal">-get</span> install git</span><br><span class="line"><span class="comment"># 确保git已安装</span></span><br><span class="line">git -<span class="literal">-version</span></span><br><span class="line"><span class="comment"># 配置用户名和邮箱</span></span><br><span class="line">git config -<span class="literal">-global</span> user.name  用户名                    （github官网注册的用户名）</span><br><span class="line">git config -<span class="literal">-global</span> user.email  邮箱                     （gitub官网注册绑定的邮箱）</span><br><span class="line"><span class="comment"># 配置git代理</span></span><br><span class="line">git config -<span class="literal">-global</span> http.proxy http://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">7890</span></span><br><span class="line">git config -<span class="literal">-global</span> https.proxy https://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">7890</span></span><br><span class="line"><span class="comment"># 查看配置</span></span><br><span class="line">git config -<span class="literal">-list</span></span><br><span class="line"><span class="comment"># 配置SSH(可选)</span></span><br><span class="line"><span class="comment"># 参考</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="WSL-终端美化"><a href="#WSL-终端美化" class="headerlink" title="WSL 终端美化"></a>WSL 终端美化</h2><h3 id="1-安装zsh-ohmyzsh"><a href="#1-安装zsh-ohmyzsh" class="headerlink" title="1. 安装zsh/ohmyzsh"></a>1. 安装zsh/ohmyzsh</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看当前使用的shell</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$SHELL</span></span><br><span class="line"><span class="comment"># 查看系统是否装了zsh</span></span><br><span class="line"><span class="built_in">cat</span> /etc/shells</span><br><span class="line"><span class="comment"># 安装zsh</span></span><br><span class="line">sudo apt<span class="literal">-get</span> install zsh</span><br><span class="line"><span class="comment"># 确保zsh已安装，如果显示/bin/zsh，则安装成功</span></span><br><span class="line">which <span class="literal">-a</span> zsh</span><br><span class="line"><span class="comment"># 切换shell为zsh</span></span><br><span class="line">chsh <span class="literal">-s</span> /bin/zsh</span><br><span class="line"><span class="comment"># 重启WSL shell</span></span><br><span class="line"><span class="comment"># 查看当前shell, 如果显示/bin/zsh，则配置成功</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$SHELL</span></span><br><span class="line"><span class="comment"># 安装oh my zsh（任选其一）</span></span><br><span class="line">sh <span class="literal">-c</span> <span class="string">&quot;<span class="variable">$</span>(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)&quot;</span> 			<span class="comment"># wget</span></span><br><span class="line">sh <span class="literal">-c</span> <span class="string">&quot;<span class="variable">$</span>(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&quot;</span>     <span class="comment"># curl</span></span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Cloning <span class="built_in">Oh</span> My Zsh...</span><br><span class="line">Cloning into <span class="string">&#x27;/Users/xxxx/.oh-my-zsh&#x27;</span>...</span><br><span class="line">remote: Counting objects: <span class="number">831</span>, done.</span><br><span class="line">remote: Compressing objects: <span class="number">100</span>% (<span class="number">700</span>/<span class="number">700</span>), done.</span><br><span class="line">remote: Total <span class="number">831</span> (delta <span class="number">14</span>), reused <span class="number">775</span> (delta <span class="number">10</span>), pack<span class="literal">-reused</span> <span class="number">0</span></span><br><span class="line">Receiving objects: <span class="number">100</span>% (<span class="number">831</span>/<span class="number">831</span>), <span class="number">567.67</span> KiB | <span class="number">75.00</span> KiB/s, done.</span><br><span class="line">Resolving deltas: <span class="number">100</span>% (<span class="number">14</span>/<span class="number">14</span>), done.</span><br><span class="line">Looking <span class="keyword">for</span> an existing zsh config...</span><br><span class="line">Found ~/.zshrc. Backing up to ~/.zshrc.pre<span class="literal">-oh</span><span class="literal">-my</span><span class="literal">-zsh</span></span><br><span class="line"><span class="keyword">Using</span> the Oh My Zsh template file and adding it to ~/.zshrc</span><br><span class="line">             __                                     __   </span><br><span class="line">      ____  / /_     ____ ___  __  __   ____  _____/ /_  </span><br><span class="line">     / __ \/ __ \   / __ `__ \/ / / /  /_  / / ___/ __ \ </span><br><span class="line">    / /_/ / / / /  / / / / / / /_/ /    / /_(__  ) / / / </span><br><span class="line">    \____/_/ /_/  /_/ /_/ /_/\__, /    /___/____/_/ /_/  </span><br><span class="line">                            /____/                       ....is now installed!</span><br><span class="line">Please look over the ~/.zshrc file to <span class="built_in">select</span> plugins, themes, and options.</span><br><span class="line">p.s. Follow us at https://twitter.com/ohmyzsh.</span><br><span class="line">p.p.s. Get stickers and t<span class="literal">-shirts</span> at http://shop.planetargon.com.</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-更换主题"><a href="#2-更换主题" class="headerlink" title="2. 更换主题"></a>2. 更换主题</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.zshrc</span><br><span class="line"><span class="comment"># 更改ZSH_THEME=&quot;robbyrussell&quot; -&gt; ZSH_THEME=&quot;ys&quot;</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p> 更多主题请点击该链接：<a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh/wiki/themes#pygmalion">主题列表</a></p>
-</blockquote>
-<h3 id="3-生效主题"><a href="#3-生效主题" class="headerlink" title="3. 生效主题"></a>3. 生效主题</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.zshrc</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-安装插件"><a href="#4-安装插件" class="headerlink" title="4. 安装插件"></a>4. 安装插件</h3><ul>
-<li><p>Zsh命令自动补全插件 <a target="_blank" rel="noopener" href="https://github.com/zsh-users/zsh-autosuggestions">zsh-autosuggestions</a></p>
-  <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/zsh<span class="literal">-users</span>/zsh<span class="literal">-autosuggestions</span> <span class="variable">$ZSH_CUSTOM</span>/plugins/zsh<span class="literal">-autosuggestions</span></span><br></pre></td></tr></table></figure></li>
-<li><p>Zsh命令语法高亮插件 <a target="_blank" rel="noopener" href="https://github.com/zsh-users/zsh-syntax-highlighting">zsh-syntax-highlighting</a></p>
-  <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/zsh<span class="literal">-users</span>/zsh<span class="literal">-syntax</span><span class="literal">-highlighting</span>.git <span class="variable">$ZSH_CUSTOM</span>/plugins/zsh<span class="literal">-syntax</span><span class="literal">-highlighting</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<p>开启插件<br>编辑<code>~/.zshrc</code>文件<br>找到<code>plugins=(git)</code>这一行，如果没有添加，更改为如下</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vim ~/.zshrc</span></span><br><span class="line">plugins=(</span><br><span class="line">   git</span><br><span class="line">   zsh<span class="literal">-syntax</span><span class="literal">-highlighting</span></span><br><span class="line">   zsh<span class="literal">-autosuggestions</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>生效插件</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.zshrc</span><br></pre></td></tr></table></figure>
-
-<p>效果如图：</p>
-<img src="C:\Users\15791\AppData\Roaming\Typora\typora-user-images\image-20210619112154106.png" alt="image-20210619112154106" style="zoom:80%;" />
-
-<h2 id="下载VScode"><a href="#下载VScode" class="headerlink" title="下载VScode"></a>下载VScode</h2><blockquote>
-<p>下载链接：<a target="_blank" rel="noopener" href="https://code.visualstudio.com/download">Download Visual Studio Code - Mac, Linux, Windows</a></p>
-<p>下载Windows User Installer</p>
-<p>默认安装</p>
-</blockquote>
-<h2 id="搭建-C-开发环境"><a href="#搭建-C-开发环境" class="headerlink" title="搭建 C++ 开发环境"></a>搭建 C++ 开发环境</h2><blockquote>
-<p>参考链接：[<a target="_blank" rel="noopener" href="https://quanuanc.github.io/posts/vscode-wsl-cpp/">译] 使用 VS Code 和 WSL 搭建 C++ 开发环境 (quanuanc.github.io)</a></p>
-</blockquote>
-<h2 id="搭建Node-js开发环境"><a href="#搭建Node-js开发环境" class="headerlink" title="搭建Node.js开发环境"></a>搭建Node.js开发环境</h2><h3 id="1-懒人版"><a href="#1-懒人版" class="headerlink" title="1. 懒人版"></a>1. 懒人版</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">sudo apt<span class="literal">-get</span> update</span><br><span class="line">sudo apt<span class="literal">-get</span> install nodejs npm</span><br><span class="line"><span class="comment"># 验证安装</span></span><br><span class="line">nodejs <span class="literal">-v</span></span><br></pre></td></tr></table></figure>
-<h3 id="2-安装更新的版本"><a href="#2-安装更新的版本" class="headerlink" title="2. 安装更新的版本"></a>2. 安装更新的版本</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装更新的版本</span></span><br><span class="line"><span class="comment"># 安装npm</span></span><br><span class="line">sudo apt<span class="literal">-get</span> instatll npm</span><br><span class="line"><span class="comment"># 安装nodejs版本管理模块n</span></span><br><span class="line">sudo npm install <span class="literal">-g</span> n</span><br><span class="line"><span class="comment"># 通过模块n安装指定版本的nodejs</span></span><br><span class="line">sudo n latest 	<span class="comment">#最新版</span></span><br><span class="line">sudo n stable 	<span class="comment">#最新稳定版</span></span><br><span class="line">sudo n lts 		<span class="comment">#最新lts版</span></span><br><span class="line"><span class="comment"># 验证安装</span></span><br><span class="line">node <span class="literal">-v</span></span><br><span class="line">npm <span class="literal">-v</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="3-安装yarn"><a href="#3-安装yarn" class="headerlink" title="3. 安装yarn"></a>3. 安装yarn</h3><p>yarn与npm一样，都是包管理工具，但是yarn更轻量，下载速度更快，推荐使用yarn</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装yarn</span></span><br><span class="line">sudo npm install <span class="literal">-g</span> yarn</span><br><span class="line"><span class="comment"># npm, yarn查看源和换源</span></span><br><span class="line">npm config get registry  									<span class="comment"># 查看npm当前镜像源</span></span><br><span class="line">npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org/  	<span class="comment"># 设置npm镜像源为淘宝镜像</span></span><br><span class="line">yarn config get registry  									<span class="comment"># 查看yarn当前镜像源</span></span><br><span class="line">yarn config <span class="built_in">set</span> registry https://registry.npm.taobao.org/  	<span class="comment"># 设置yarn镜像源为淘宝镜像</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="搭建Python开发环境"><a href="#搭建Python开发环境" class="headerlink" title="搭建Python开发环境"></a>搭建Python开发环境</h2><h3 id="1-安装miniconda"><a href="#1-安装miniconda" class="headerlink" title="1. 安装miniconda"></a>1. 安装miniconda</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载最新版 miniconda：</span></span><br><span class="line"><span class="built_in">wget</span> https://repo.continuum.io/miniconda/Miniconda3<span class="literal">-latest</span><span class="literal">-Linux</span><span class="literal">-x86_64</span>.sh</span><br><span class="line"><span class="comment"># 安装</span></span><br><span class="line">sh Miniconda3<span class="literal">-latest</span><span class="literal">-Linux</span><span class="literal">-x86_64</span>.sh</span><br><span class="line"><span class="comment"># 安装完成后，关闭terminal后，重新打开，输入以下命令以验证是否安装成功</span></span><br><span class="line">conda <span class="literal">-V</span></span><br><span class="line"><span class="comment"># 添加镜像</span></span><br><span class="line">conda config -<span class="literal">-add</span> channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free</span><br><span class="line">conda config -<span class="literal">-add</span> channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda<span class="literal">-forge</span></span><br><span class="line">conda config -<span class="literal">-add</span> channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/bioconda</span><br><span class="line">conda config -<span class="literal">-set</span> show_channel_urls yes</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-创建虚拟环境"><a href="#2-创建虚拟环境" class="headerlink" title="2. 创建虚拟环境"></a>2. 创建虚拟环境</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装jupyterlab</span></span><br><span class="line">conda install jupyterlab</span><br><span class="line"><span class="comment"># 创建虚拟环境，并且映射到jupyter的kernel中</span></span><br><span class="line">conda create <span class="literal">-n</span> &lt;your_env_name&gt; python=<span class="number">3.8</span> ipykernel</span><br><span class="line"><span class="comment"># 或者将已创建的虚拟环境映射到jupyter的kernel中</span></span><br><span class="line">python <span class="literal">-m</span> ipykernel install -<span class="literal">-user</span> -<span class="literal">-name</span> &lt;your_env_name&gt; -<span class="literal">-display</span><span class="literal">-name</span> <span class="string">&quot;&lt;your_display_name&gt;&quot;</span></span><br><span class="line"><span class="comment">#激活python虚拟环境</span></span><br><span class="line">conda activate your_env_name  </span><br><span class="line"><span class="comment">#退出当前的虚拟环境</span></span><br><span class="line">conda deactivate              </span><br></pre></td></tr></table></figure>
-
-<h3 id="3-后台运行Jupyter-Lab"><a href="#3-后台运行Jupyter-Lab" class="headerlink" title="3. 后台运行Jupyter Lab"></a>3. 后台运行Jupyter Lab</h3><blockquote>
-<p>JupyterLab 密码配置参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34419607/article/details/109177125">jupyter lab/notebook 配置远程访问（密码多少）_村雨的博客-CSDN博客</a></p>
-</blockquote>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一个目录存放日志</span></span><br><span class="line">mkdir ~/log</span><br><span class="line"><span class="comment"># 开发端口（可选）</span></span><br><span class="line">sudo firewall<span class="literal">-cmd</span> -<span class="literal">-zone</span>=public -<span class="literal">-add</span><span class="literal">-port</span>=&lt;your_port&gt;/tcp -<span class="literal">-permanent</span></span><br><span class="line">sudo firewall<span class="literal">-cmd</span> -<span class="literal">-reload</span></span><br><span class="line"><span class="comment"># 后台运行jupyter</span></span><br><span class="line">nohup jupyter lab -<span class="literal">-no</span><span class="literal">-browser</span> -<span class="literal">-port</span>=&lt;your_port&gt; &gt;~/log/jupyter.log <span class="number">2</span>&gt;&amp;<span class="number">1</span> &amp;</span><br></pre></td></tr></table></figure>
-
-<p>效果如图：</p>
-<img src="C:\Users\15791\AppData\Roaming\Typora\typora-user-images\image-20210619114725885.png" alt="image-20210619114725885" style="zoom:80%;" />
-
-<h3 id="4-VSCode开发"><a href="#4-VSCode开发" class="headerlink" title="4. VSCode开发"></a>4. VSCode开发</h3><h4 id="1-安装插件"><a href="#1-安装插件" class="headerlink" title="1. 安装插件"></a>1. 安装插件</h4><img src="C:\Users\15791\AppData\Roaming\Typora\typora-user-images\image-20210619115135126.png" alt="image-20210619115135126" style="zoom:80%;" />
-
-<h4 id="2-选择虚拟环境"><a href="#2-选择虚拟环境" class="headerlink" title="2. 选择虚拟环境"></a>2. 选择虚拟环境</h4><p><code>crtl+shift+p</code>, 输入<code>\&gt;select interpreter</code>, 选择相应的虚拟环境</p>
-<img src="C:\Users\15791\AppData\Roaming\Typora\typora-user-images\image-20210619115732129.png" alt="image-20210619115732129" style="zoom:80%;" />
-
-<img src="C:\Users\15791\AppData\Roaming\Typora\typora-user-images\image-20210619115801496.png" alt="image-20210619115801496" style="zoom:80%;" />
-
-<h4 id="3-运行效果："><a href="#3-运行效果：" class="headerlink" title="3. 运行效果："></a>3. 运行效果：</h4><img src="C:\Users\15791\AppData\Roaming\Typora\typora-user-images\image-20210619115904630.png" alt="image-20210619115904630" style="zoom:80%;" />
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/12/LeetCode%20%E9%9D%A2%E8%AF%95%E9%A2%98%2017.10.%20%E4%B8%BB%E8%A6%81%E5%85%83%E7%B4%A0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -490,7 +268,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2021/07/12/LeetCode%20%E9%9D%A2%E8%AF%95%E9%A2%98%2017.10.%20%E4%B8%BB%E8%A6%81%E5%85%83%E7%B4%A0/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2021/07/12/LeetCode%20%E9%9D%A2%E8%AF%95%E9%A2%98%2017.10.%20%E4%B8%BB%E8%A6%81%E5%85%83%E7%B4%A0/" itemprop="url">LeetCode 面试题 17.10. 主要元素</a></h1>
         
 
         <div class="post-meta">
@@ -542,7 +320,7 @@
       
         
           
-            <h1 id="LeetCode-面试题-17-10-主要元素"><a href="#LeetCode-面试题-17-10-主要元素" class="headerlink" title="LeetCode 面试题 17.10. 主要元素"></a>LeetCode <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/find-majority-element-lcci/">面试题 17.10. 主要元素</a></h1><blockquote>
+            <blockquote>
 <p>@Lloyd 2021.07.09</p>
 </blockquote>
 <h3 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h3><p>数组中占比超过一半的元素称之为主要元素。给你一个 整数 数组，找出其中的主要元素。若没有，返回 -1 。</p>
@@ -632,7 +410,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2021/07/12/LeetCode%20981.%20%E5%9F%BA%E4%BA%8E%E6%97%B6%E9%97%B4%E7%9A%84%E9%94%AE%E5%80%BC%E5%AD%98%E5%82%A8/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2021/07/12/LeetCode%20981.%20%E5%9F%BA%E4%BA%8E%E6%97%B6%E9%97%B4%E7%9A%84%E9%94%AE%E5%80%BC%E5%AD%98%E5%82%A8/" itemprop="url">LeetCode 981. 基于时间的键值存储</a></h1>
         
 
         <div class="post-meta">
@@ -644,7 +422,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-07-12T21:40:17+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-07-12T20:50:33+08:00">
                 2021-07-12
               </time>
             
@@ -684,7 +462,7 @@
       
         
           
-            <h1 id="LeetCode-981-基于时间的键值存储"><a href="#LeetCode-981-基于时间的键值存储" class="headerlink" title="LeetCode 981. 基于时间的键值存储"></a>LeetCode 981. 基于时间的键值存储</h1><blockquote>
+            <blockquote>
 <p>原题链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/time-based-key-value-store/">https://leetcode-cn.com/problems/time-based-key-value-store/</a></p>
 </blockquote>
 <h3 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h3><p>创建一个基于时间的键值存储类 TimeMap，它支持下面两个操作：</p>
@@ -857,6 +635,225 @@
 
 <p>导致只能通过部分样例，但不通过的样例单独测试又能通过。</p>
 <p>这是因为静态局部变量在程序执行到该对象的声明处时被首次初始化，即以后的函数调用不再进行初始化，所以导致后面的函数调用n的值不对，从而答案错误。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/12/WSL%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83(CC++PythonNode.js)%E6%90%AD%E5%BB%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lloyd's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/07/12/WSL%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83(CC++PythonNode.js)%E6%90%AD%E5%BB%BA/" itemprop="url">WSL开发环境(C/C++/Python/Node.js)搭建</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-07-12T20:50:33+08:00">
+                2021-07-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]</p>
+<h2 id="WSL-配置"><a href="#WSL-配置" class="headerlink" title="WSL 配置"></a>WSL 配置</h2><h3 id="1-启用虚拟机"><a href="#1-启用虚拟机" class="headerlink" title="1. 启用虚拟机"></a>1. 启用虚拟机</h3><p>两种方法任选其一：</p>
+<ul>
+<li><p>管理员权限运行powershell并运行下面的命令：</p>
+  <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Enable-WindowsOptionalFeature</span> <span class="literal">-Online</span> <span class="literal">-FeatureName</span> Microsoft<span class="literal">-Windows</span><span class="literal">-Subsystem</span><span class="literal">-Linux</span></span><br></pre></td></tr></table></figure></li>
+<li><p>控制面板 -&gt; 程序 -&gt; 程序和功能 -&gt; 启用或关闭Windows功能 -&gt; 勾选 适用于Linux的Windows子系统/虚拟机平台</p>
+  <img src="C:\Users\15791\AppData\Roaming\Typora\typora-user-images\image-20210619101823940.png" alt="image-20210619101823940" style="zoom:80%;" /></li>
+</ul>
+<h3 id="2-重启电脑"><a href="#2-重启电脑" class="headerlink" title="2.  重启电脑"></a>2.  重启电脑</h3><h3 id="3-打开应用商城搜索“WSL”，可根据自己需求选择安装一个或多个Linux系统："><a href="#3-打开应用商城搜索“WSL”，可根据自己需求选择安装一个或多个Linux系统：" class="headerlink" title="3.  打开应用商城搜索“WSL”，可根据自己需求选择安装一个或多个Linux系统："></a>3.  打开应用商城搜索“WSL”，可根据自己需求选择安装一个或多个Linux系统：</h3><img src="C:\Users\15791\AppData\Roaming\Typora\typora-user-images\image-20210619102102593.png" alt="image-20210619102102593" style="zoom:80%;" />
+
+<p>下面以<code>Ubuntu</code>为例.</p>
+<h3 id="4-安装完成后可在开始菜单里找到快捷方式并启动，第一次运行需要等待安装并设置用户名、密码。"><a href="#4-安装完成后可在开始菜单里找到快捷方式并启动，第一次运行需要等待安装并设置用户名、密码。" class="headerlink" title="4. 安装完成后可在开始菜单里找到快捷方式并启动，第一次运行需要等待安装并设置用户名、密码。"></a>4. 安装完成后可在开始菜单里找到快捷方式并启动，第一次运行需要等待安装并设置用户名、密码。</h3><p>用户名需满足UNIX标准，全小写字母和数字</p>
+<h3 id="5-升级WSL2"><a href="#5-升级WSL2" class="headerlink" title="5. 升级WSL2"></a>5. 升级WSL2</h3><h4 id="1-对比WSL1"><a href="#1-对比WSL1" class="headerlink" title="1. 对比WSL1"></a>1. <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/wsl/compare-versions">对比WSL1</a></h4><img src="C:\Users\15791\AppData\Roaming\Typora\typora-user-images\image-20210619102607508.png" alt="image-20210619102607508" style="zoom:80%;" />
+
+<p><strong>最重要的是WSL2完美支持Docker！</strong></p>
+<h4 id="2-启用WSL2"><a href="#2-启用WSL2" class="headerlink" title="2. 启用WSL2"></a>2. 启用WSL2</h4><ul>
+<li><p>确保你的Windows版本大于10.0.18917</p>
+</li>
+<li><p>更新WSL2内核：<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows/wsl/install-win10#step-4---download-the-linux-kernel-update-package">下载地址</a></p>
+  <img src="C:\Users\15791\AppData\Roaming\Typora\typora-user-images\image-20210619103712090.png" alt="image-20210619103712090" style="zoom:80%;" /></li>
+<li><p>管理员权限运行powershell并运行下面的命令：</p>
+  <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wsl <span class="literal">-l</span></span><br><span class="line">wsl -<span class="literal">-set</span><span class="literal">-version</span> &lt;Distro&gt; <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>&lt;Distro&gt;</code> 指<code>wsl -l</code> 得到的结果</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="Windows-Terminal-配置"><a href="#Windows-Terminal-配置" class="headerlink" title="Windows Terminal 配置"></a>Windows Terminal 配置</h2><h3 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h3><img src="C:\Users\15791\AppData\Roaming\Typora\typora-user-images\image-20210619104007101.png" alt="image-20210619104007101" style="zoom:80%;" />
+
+<h3 id="2-配置"><a href="#2-配置" class="headerlink" title="2. 配置"></a>2. 配置</h3><img src="C:\Users\15791\AppData\Roaming\Typora\typora-user-images\image-20210619104134868.png" alt="image-20210619104134868" style="zoom:80%;" />
+
+<img src="C:\Users\15791\AppData\Roaming\Typora\typora-user-images\image-20210619104219740.png" alt="image-20210619104219740" style="zoom:80%;" />
+
+<img src="C:\Users\15791\AppData\Roaming\Typora\typora-user-images\image-20210619104243195.png" alt="image-20210619104243195" style="zoom:80%;" />
+
+<img src="C:\Users\15791\AppData\Roaming\Typora\typora-user-images\image-20210619104258069.png" alt="image-20210619104258069" style="zoom:80%;" />
+
+<h2 id="Git-安装配置"><a href="#Git-安装配置" class="headerlink" title="Git 安装配置"></a>Git 安装配置</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">sudo apt<span class="literal">-get</span> install git</span><br><span class="line"><span class="comment"># 确保git已安装</span></span><br><span class="line">git -<span class="literal">-version</span></span><br><span class="line"><span class="comment"># 配置用户名和邮箱</span></span><br><span class="line">git config -<span class="literal">-global</span> user.name  用户名                    （github官网注册的用户名）</span><br><span class="line">git config -<span class="literal">-global</span> user.email  邮箱                     （gitub官网注册绑定的邮箱）</span><br><span class="line"><span class="comment"># 配置git代理</span></span><br><span class="line">git config -<span class="literal">-global</span> http.proxy http://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">7890</span></span><br><span class="line">git config -<span class="literal">-global</span> https.proxy https://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">7890</span></span><br><span class="line"><span class="comment"># 查看配置</span></span><br><span class="line">git config -<span class="literal">-list</span></span><br><span class="line"><span class="comment"># 配置SSH(可选)</span></span><br><span class="line"><span class="comment"># 参考</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="WSL-终端美化"><a href="#WSL-终端美化" class="headerlink" title="WSL 终端美化"></a>WSL 终端美化</h2><h3 id="1-安装zsh-ohmyzsh"><a href="#1-安装zsh-ohmyzsh" class="headerlink" title="1. 安装zsh/ohmyzsh"></a>1. 安装zsh/ohmyzsh</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看当前使用的shell</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$SHELL</span></span><br><span class="line"><span class="comment"># 查看系统是否装了zsh</span></span><br><span class="line"><span class="built_in">cat</span> /etc/shells</span><br><span class="line"><span class="comment"># 安装zsh</span></span><br><span class="line">sudo apt<span class="literal">-get</span> install zsh</span><br><span class="line"><span class="comment"># 确保zsh已安装，如果显示/bin/zsh，则安装成功</span></span><br><span class="line">which <span class="literal">-a</span> zsh</span><br><span class="line"><span class="comment"># 切换shell为zsh</span></span><br><span class="line">chsh <span class="literal">-s</span> /bin/zsh</span><br><span class="line"><span class="comment"># 重启WSL shell</span></span><br><span class="line"><span class="comment"># 查看当前shell, 如果显示/bin/zsh，则配置成功</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$SHELL</span></span><br><span class="line"><span class="comment"># 安装oh my zsh（任选其一）</span></span><br><span class="line">sh <span class="literal">-c</span> <span class="string">&quot;<span class="variable">$</span>(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)&quot;</span> 			<span class="comment"># wget</span></span><br><span class="line">sh <span class="literal">-c</span> <span class="string">&quot;<span class="variable">$</span>(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&quot;</span>     <span class="comment"># curl</span></span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Cloning <span class="built_in">Oh</span> My Zsh...</span><br><span class="line">Cloning into <span class="string">&#x27;/Users/xxxx/.oh-my-zsh&#x27;</span>...</span><br><span class="line">remote: Counting objects: <span class="number">831</span>, done.</span><br><span class="line">remote: Compressing objects: <span class="number">100</span>% (<span class="number">700</span>/<span class="number">700</span>), done.</span><br><span class="line">remote: Total <span class="number">831</span> (delta <span class="number">14</span>), reused <span class="number">775</span> (delta <span class="number">10</span>), pack<span class="literal">-reused</span> <span class="number">0</span></span><br><span class="line">Receiving objects: <span class="number">100</span>% (<span class="number">831</span>/<span class="number">831</span>), <span class="number">567.67</span> KiB | <span class="number">75.00</span> KiB/s, done.</span><br><span class="line">Resolving deltas: <span class="number">100</span>% (<span class="number">14</span>/<span class="number">14</span>), done.</span><br><span class="line">Looking <span class="keyword">for</span> an existing zsh config...</span><br><span class="line">Found ~/.zshrc. Backing up to ~/.zshrc.pre<span class="literal">-oh</span><span class="literal">-my</span><span class="literal">-zsh</span></span><br><span class="line"><span class="keyword">Using</span> the Oh My Zsh template file and adding it to ~/.zshrc</span><br><span class="line">             __                                     __   </span><br><span class="line">      ____  / /_     ____ ___  __  __   ____  _____/ /_  </span><br><span class="line">     / __ \/ __ \   / __ `__ \/ / / /  /_  / / ___/ __ \ </span><br><span class="line">    / /_/ / / / /  / / / / / / /_/ /    / /_(__  ) / / / </span><br><span class="line">    \____/_/ /_/  /_/ /_/ /_/\__, /    /___/____/_/ /_/  </span><br><span class="line">                            /____/                       ....is now installed!</span><br><span class="line">Please look over the ~/.zshrc file to <span class="built_in">select</span> plugins, themes, and options.</span><br><span class="line">p.s. Follow us at https://twitter.com/ohmyzsh.</span><br><span class="line">p.p.s. Get stickers and t<span class="literal">-shirts</span> at http://shop.planetargon.com.</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-更换主题"><a href="#2-更换主题" class="headerlink" title="2. 更换主题"></a>2. 更换主题</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.zshrc</span><br><span class="line"><span class="comment"># 更改ZSH_THEME=&quot;robbyrussell&quot; -&gt; ZSH_THEME=&quot;ys&quot;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p> 更多主题请点击该链接：<a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh/wiki/themes#pygmalion">主题列表</a></p>
+</blockquote>
+<h3 id="3-生效主题"><a href="#3-生效主题" class="headerlink" title="3. 生效主题"></a>3. 生效主题</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-安装插件"><a href="#4-安装插件" class="headerlink" title="4. 安装插件"></a>4. 安装插件</h3><ul>
+<li><p>Zsh命令自动补全插件 <a target="_blank" rel="noopener" href="https://github.com/zsh-users/zsh-autosuggestions">zsh-autosuggestions</a></p>
+  <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/zsh<span class="literal">-users</span>/zsh<span class="literal">-autosuggestions</span> <span class="variable">$ZSH_CUSTOM</span>/plugins/zsh<span class="literal">-autosuggestions</span></span><br></pre></td></tr></table></figure></li>
+<li><p>Zsh命令语法高亮插件 <a target="_blank" rel="noopener" href="https://github.com/zsh-users/zsh-syntax-highlighting">zsh-syntax-highlighting</a></p>
+  <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/zsh<span class="literal">-users</span>/zsh<span class="literal">-syntax</span><span class="literal">-highlighting</span>.git <span class="variable">$ZSH_CUSTOM</span>/plugins/zsh<span class="literal">-syntax</span><span class="literal">-highlighting</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>开启插件<br>编辑<code>~/.zshrc</code>文件<br>找到<code>plugins=(git)</code>这一行，如果没有添加，更改为如下</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vim ~/.zshrc</span></span><br><span class="line">plugins=(</span><br><span class="line">   git</span><br><span class="line">   zsh<span class="literal">-syntax</span><span class="literal">-highlighting</span></span><br><span class="line">   zsh<span class="literal">-autosuggestions</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>生效插件</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<p>效果如图：</p>
+<img src="C:\Users\15791\AppData\Roaming\Typora\typora-user-images\image-20210619112154106.png" alt="image-20210619112154106" style="zoom:80%;" />
+
+<h2 id="下载VScode"><a href="#下载VScode" class="headerlink" title="下载VScode"></a>下载VScode</h2><blockquote>
+<p>下载链接：<a target="_blank" rel="noopener" href="https://code.visualstudio.com/download">Download Visual Studio Code - Mac, Linux, Windows</a></p>
+<p>下载Windows User Installer</p>
+<p>默认安装</p>
+</blockquote>
+<h2 id="搭建-C-开发环境"><a href="#搭建-C-开发环境" class="headerlink" title="搭建 C++ 开发环境"></a>搭建 C++ 开发环境</h2><blockquote>
+<p>参考链接：[<a target="_blank" rel="noopener" href="https://quanuanc.github.io/posts/vscode-wsl-cpp/">译] 使用 VS Code 和 WSL 搭建 C++ 开发环境 (quanuanc.github.io)</a></p>
+</blockquote>
+<h2 id="搭建Node-js开发环境"><a href="#搭建Node-js开发环境" class="headerlink" title="搭建Node.js开发环境"></a>搭建Node.js开发环境</h2><h3 id="1-懒人版"><a href="#1-懒人版" class="headerlink" title="1. 懒人版"></a>1. 懒人版</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">sudo apt<span class="literal">-get</span> update</span><br><span class="line">sudo apt<span class="literal">-get</span> install nodejs npm</span><br><span class="line"><span class="comment"># 验证安装</span></span><br><span class="line">nodejs <span class="literal">-v</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-安装更新的版本"><a href="#2-安装更新的版本" class="headerlink" title="2. 安装更新的版本"></a>2. 安装更新的版本</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装更新的版本</span></span><br><span class="line"><span class="comment"># 安装npm</span></span><br><span class="line">sudo apt<span class="literal">-get</span> instatll npm</span><br><span class="line"><span class="comment"># 安装nodejs版本管理模块n</span></span><br><span class="line">sudo npm install <span class="literal">-g</span> n</span><br><span class="line"><span class="comment"># 通过模块n安装指定版本的nodejs</span></span><br><span class="line">sudo n latest 	<span class="comment">#最新版</span></span><br><span class="line">sudo n stable 	<span class="comment">#最新稳定版</span></span><br><span class="line">sudo n lts 		<span class="comment">#最新lts版</span></span><br><span class="line"><span class="comment"># 验证安装</span></span><br><span class="line">node <span class="literal">-v</span></span><br><span class="line">npm <span class="literal">-v</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-安装yarn"><a href="#3-安装yarn" class="headerlink" title="3. 安装yarn"></a>3. 安装yarn</h3><p>yarn与npm一样，都是包管理工具，但是yarn更轻量，下载速度更快，推荐使用yarn</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装yarn</span></span><br><span class="line">sudo npm install <span class="literal">-g</span> yarn</span><br><span class="line"><span class="comment"># npm, yarn查看源和换源</span></span><br><span class="line">npm config get registry  									<span class="comment"># 查看npm当前镜像源</span></span><br><span class="line">npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org/  	<span class="comment"># 设置npm镜像源为淘宝镜像</span></span><br><span class="line">yarn config get registry  									<span class="comment"># 查看yarn当前镜像源</span></span><br><span class="line">yarn config <span class="built_in">set</span> registry https://registry.npm.taobao.org/  	<span class="comment"># 设置yarn镜像源为淘宝镜像</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="搭建Python开发环境"><a href="#搭建Python开发环境" class="headerlink" title="搭建Python开发环境"></a>搭建Python开发环境</h2><h3 id="1-安装miniconda"><a href="#1-安装miniconda" class="headerlink" title="1. 安装miniconda"></a>1. 安装miniconda</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载最新版 miniconda：</span></span><br><span class="line"><span class="built_in">wget</span> https://repo.continuum.io/miniconda/Miniconda3<span class="literal">-latest</span><span class="literal">-Linux</span><span class="literal">-x86_64</span>.sh</span><br><span class="line"><span class="comment"># 安装</span></span><br><span class="line">sh Miniconda3<span class="literal">-latest</span><span class="literal">-Linux</span><span class="literal">-x86_64</span>.sh</span><br><span class="line"><span class="comment"># 安装完成后，关闭terminal后，重新打开，输入以下命令以验证是否安装成功</span></span><br><span class="line">conda <span class="literal">-V</span></span><br><span class="line"><span class="comment"># 添加镜像</span></span><br><span class="line">conda config -<span class="literal">-add</span> channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free</span><br><span class="line">conda config -<span class="literal">-add</span> channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda<span class="literal">-forge</span></span><br><span class="line">conda config -<span class="literal">-add</span> channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/bioconda</span><br><span class="line">conda config -<span class="literal">-set</span> show_channel_urls yes</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-创建虚拟环境"><a href="#2-创建虚拟环境" class="headerlink" title="2. 创建虚拟环境"></a>2. 创建虚拟环境</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装jupyterlab</span></span><br><span class="line">conda install jupyterlab</span><br><span class="line"><span class="comment"># 创建虚拟环境，并且映射到jupyter的kernel中</span></span><br><span class="line">conda create <span class="literal">-n</span> &lt;your_env_name&gt; python=<span class="number">3.8</span> ipykernel</span><br><span class="line"><span class="comment"># 或者将已创建的虚拟环境映射到jupyter的kernel中</span></span><br><span class="line">python <span class="literal">-m</span> ipykernel install -<span class="literal">-user</span> -<span class="literal">-name</span> &lt;your_env_name&gt; -<span class="literal">-display</span><span class="literal">-name</span> <span class="string">&quot;&lt;your_display_name&gt;&quot;</span></span><br><span class="line"><span class="comment">#激活python虚拟环境</span></span><br><span class="line">conda activate your_env_name  </span><br><span class="line"><span class="comment">#退出当前的虚拟环境</span></span><br><span class="line">conda deactivate              </span><br></pre></td></tr></table></figure>
+
+<h3 id="3-后台运行Jupyter-Lab"><a href="#3-后台运行Jupyter-Lab" class="headerlink" title="3. 后台运行Jupyter Lab"></a>3. 后台运行Jupyter Lab</h3><blockquote>
+<p>JupyterLab 密码配置参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34419607/article/details/109177125">jupyter lab/notebook 配置远程访问（密码多少）_村雨的博客-CSDN博客</a></p>
+</blockquote>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一个目录存放日志</span></span><br><span class="line">mkdir ~/log</span><br><span class="line"><span class="comment"># 开发端口（可选）</span></span><br><span class="line">sudo firewall<span class="literal">-cmd</span> -<span class="literal">-zone</span>=public -<span class="literal">-add</span><span class="literal">-port</span>=&lt;your_port&gt;/tcp -<span class="literal">-permanent</span></span><br><span class="line">sudo firewall<span class="literal">-cmd</span> -<span class="literal">-reload</span></span><br><span class="line"><span class="comment"># 后台运行jupyter</span></span><br><span class="line">nohup jupyter lab -<span class="literal">-no</span><span class="literal">-browser</span> -<span class="literal">-port</span>=&lt;your_port&gt; &gt;~/log/jupyter.log <span class="number">2</span>&gt;&amp;<span class="number">1</span> &amp;</span><br></pre></td></tr></table></figure>
+
+<p>效果如图：</p>
+<img src="C:\Users\15791\AppData\Roaming\Typora\typora-user-images\image-20210619114725885.png" alt="image-20210619114725885" style="zoom:80%;" />
+
+<h3 id="4-VSCode开发"><a href="#4-VSCode开发" class="headerlink" title="4. VSCode开发"></a>4. VSCode开发</h3><h4 id="1-安装插件"><a href="#1-安装插件" class="headerlink" title="1. 安装插件"></a>1. 安装插件</h4><img src="C:\Users\15791\AppData\Roaming\Typora\typora-user-images\image-20210619115135126.png" alt="image-20210619115135126" style="zoom:80%;" />
+
+<h4 id="2-选择虚拟环境"><a href="#2-选择虚拟环境" class="headerlink" title="2. 选择虚拟环境"></a>2. 选择虚拟环境</h4><p><code>crtl+shift+p</code>, 输入<code>\&gt;select interpreter</code>, 选择相应的虚拟环境</p>
+<img src="C:\Users\15791\AppData\Roaming\Typora\typora-user-images\image-20210619115732129.png" alt="image-20210619115732129" style="zoom:80%;" />
+
+<img src="C:\Users\15791\AppData\Roaming\Typora\typora-user-images\image-20210619115801496.png" alt="image-20210619115801496" style="zoom:80%;" />
+
+<h4 id="3-运行效果："><a href="#3-运行效果：" class="headerlink" title="3. 运行效果："></a>3. 运行效果：</h4><img src="C:\Users\15791\AppData\Roaming\Typora\typora-user-images\image-20210619115904630.png" alt="image-20210619115904630" style="zoom:80%;" />
 
           
         
@@ -1120,7 +1117,7 @@ for (int i = 0; i &lt; 100000; i += 16) &#123;Arr[i]++;&#125;
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
